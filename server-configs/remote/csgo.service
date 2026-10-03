@@ -1,0 +1,28 @@
+[Unit]
+Description=CS:GO scrim server (remote region)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=csgo
+Group=csgo
+WorkingDirectory=/home/csgo/server
+# Use your home server's exact launch line so both regions behave the same.
+# screen keeps a console you can attach to:  sudo -u csgo screen -r server
+# -D keeps screen in the foreground so systemd can supervise it.
+ExecStart=/usr/bin/screen -DmS server ./srcds_run -game csgo -console -usercon -tickrate 64 +map de_dust2 -port 27015 +game_type 0 +game_mode 1
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=30
+LimitNOFILE=65536
+# get5's stats file must be readable by the bot's SFTP user (group csgo).
+UMask=0022
+
+# Optional: if the machine runs anything else CPU-heavy, give the game a core
+# of its own and pin the other workload away from it.
+#CPUAffinity=3
+#Nice=-5
+
+[Install]
+WantedBy=multi-user.target

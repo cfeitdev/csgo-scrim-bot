@@ -1,0 +1,39 @@
+{
+  "_comment": [
+    "Hand-written get5 0.6.0 match config for testing without the bot.",
+    "Put this at csgo/cfg/get5/testmatch.json on the game server, then run:",
+    "    get5_loadmatch cfg/get5/testmatch.json",
+    "The path is relative to the csgo directory, NOT to cfg/.",
+    "",
+    "Replace the STEAM_ ids below with real ones. Find yours in-game with the",
+    "console (~) command: status",
+    "",
+    "players_per_team and min_players_to_ready are set to 1 so a single player",
+    "per side can ready up. Raise both to 5 for a real 5v5."
+  ],
+
+  "matchid": "testmatch",
+  "num_maps": 1,
+  "players_per_team": 1,
+  "min_players_to_ready": 1,
+  "min_spectators_to_ready": 0,
+  "skip_veto": true,
+  "side_type": "standard",
+
+  "maplist": ["de_mirage"],
+
+  "team1": {
+    "name": "Team A",
+    "tag": "TeamA",
+    "players": ["STEAM_1:0:11101"]
+  },
+  "team2": {
+    "name": "Team B",
+    "tag": "TeamB",
+    "players": ["STEAM_1:1:22202"]
+  },
+
+  "cvars": {
+    "get5_check_auths": "1"
+  }
+}
